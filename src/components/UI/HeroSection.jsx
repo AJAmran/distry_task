@@ -9,7 +9,7 @@ export default function HeroSection() {
         <div className="absolute top-0 left-0 w-full h-full bg-opacity-30 bg-cover bg-center" style={{ backgroundImage: "url(/path-to-your-overlay.png)" }}></div>
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row items-center max-w-6xl mx-auto px-6 py-24">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center max-w-7xl px-6 lg:px-12 mx-auto py-24">
         {/* Text Content */}
         <div className="lg:w-1/2 text-white text-center lg:text-left">
           <h1 className="text-5xl font-bold mb-4">Embrace the future of finance</h1>
