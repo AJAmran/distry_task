@@ -3,8 +3,6 @@ import React from "react";
 const InnovationSection = () => {
   return (
     <section className="bg-gray-50 max-w-7xl mx-auto px-6 lg:px-12 py-16">
-      {/* Image Section (Replace with provided image) */}
-
       <h2 className="font-semibold text-base md:text-lg text-center text-blue-500 mb-2">OUR PHILOSOPHY</h2>
       <p className="font-bold text-xl md:text-2xl lg:text-5xl text-center mb-10">Human-centred innovation</p>
       <div className="flex justify-center">
