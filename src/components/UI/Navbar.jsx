@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Globe, ChevronRight } from "lucide-react";
 
 const languages = [
@@ -16,7 +16,7 @@ const languages = [
 const Navbar = () => {
   const [navBg, setNavBg] = useState("bg-transparent");
   const [textColor, setTextColor] = useState("text-gray-200");
-  const [btnColor, setBtnColor] = useState("border-white text-black");
+  const [btnColor, setBtnColor] = useState("border-white text-white");
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState({
     solutions: false,
@@ -41,7 +41,7 @@ const Navbar = () => {
       if (window.scrollY > 50) {
         setNavBg("bg-white shadow-md");
         setTextColor("text-gray-800");
-        setBtnColor("border-blue-600 bg-orange-500 text-blue-600");
+        setBtnColor("border-blue-600 bg-orange-500 text-white");
         setLogoSrc(
           "https://cdn.sanity.io/images/6jywt20u/production/70e2228631883a893695c64b637b99dc8661871c-171x28.svg?w=171&auto=format"
         );
@@ -117,7 +117,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Menu Links */}
+          {/* Other Links */}
           {["Services", "About"].map((item, index) => (
             <Link
               key={index}
@@ -129,13 +129,10 @@ const Navbar = () => {
           ))}
 
           {/* Language Dropdown */}
-          <div
-            className="relative group"
-            onMouseEnter={() => toggleDropdown("language")}
-            onMouseLeave={() => toggleDropdown("language")}
-          >
+          <div className="relative group">
             <button
               className={`flex items-center gap-2 ${textColor} hover:text-blue-600 rounded-full border px-4 py-1`}
+              onClick={() => toggleDropdown("language")}
             >
               <Globe size={16} />
               {
@@ -144,7 +141,7 @@ const Navbar = () => {
               <ChevronDown size={14} />
             </button>
             {dropdownOpen.language && (
-              <div className="absolute right-0 mt-[1px] w-36 bg-white shadow-lg rounded-md py-2 text-left">
+              <div className="absolute right-0 mt-[1px] w-36 bg-white shadow-lg rounded-md py-2">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
@@ -159,14 +156,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Contact Button */}
-        <Link
-          href="/contact"
-          className={`hidden md:flex items-center gap-2 ${btnColor} border text-white px-5 py-2 shadow hover:bg-blue-700 transition`}
-        >
-          Contact Us <ChevronRight size={16} />
-        </Link>
-
         {/* Mobile Menu Button */}
         <button
           className="md:hidden text-gray-800"
@@ -175,6 +164,55 @@ const Navbar = () => {
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-0 right-0 w-2/3 h-full bg-white shadow-md flex flex-col p-6 space-y-6 md:hidden"
+          >
+            <button className="self-end" onClick={() => setMenuOpen(false)}>
+              <X size={28} />
+            </button>
+            {["Solutions", "Services", "About"].map((item, index) => (
+              <Link
+                key={index}
+                href={`/${item.toLowerCase()}`}
+                className="text-gray-800 text-lg"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item}
+              </Link>
+            ))}
+            {/* Language Dropdown */}
+            <div className="relative">
+              <button
+                className="flex items-center gap-2 text-gray-800"
+                onClick={() => toggleDropdown("language")}
+              >
+                <Globe size={16} /> Language <ChevronDown size={14} />
+              </button>
+              {dropdownOpen.language && (
+                <div className="mt-2 bg-gray-100 rounded-md py-2">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      className="block px-4 py-2 w-full text-left"
+                      onClick={() => handleLanguageChange(lang.code)}
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
