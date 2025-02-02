@@ -23,6 +23,9 @@ const Navbar = () => {
     language: false,
   });
   const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const [logoSrc, setLogoSrc] = useState(
+    "https://cdn.sanity.io/images/6jywt20u/production/ed83f5f1e94efb47572d503f53456dcff902b81c-200x32.svg?w=200&fm=webp"
+  );
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -39,10 +42,16 @@ const Navbar = () => {
         setNavBg("bg-white shadow-md");
         setTextColor("text-gray-800");
         setBtnColor("border-blue-600 bg-orange-500 text-blue-600");
+        setLogoSrc(
+          "https://cdn.sanity.io/images/6jywt20u/production/70e2228631883a893695c64b637b99dc8661871c-171x28.svg?w=171&auto=format"
+        );
       } else {
         setNavBg("bg-transparent");
         setTextColor("text-gray-200");
         setBtnColor("border-white text-white");
+        setLogoSrc(
+          "https://cdn.sanity.io/images/6jywt20u/production/ed83f5f1e94efb47572d503f53456dcff902b81c-200x32.svg?w=200&fm=webp"
+        );
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -76,11 +85,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <img
-              src="https://cdn.sanity.io/images/6jywt20u/production/ed83f5f1e94efb47572d503f53456dcff902b81c-200x32.svg?w=200&fm=webp"
-              alt="Logo"
-              className="h-5"
-            />
+            <img src={logoSrc} alt="Logo" className="h-5" />
           </motion.div>
         </Link>
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-[#031b38] text-white text-sm">
-      <div className="container mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex flex-col md:flex-row items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
           <Image
@@ -36,7 +36,7 @@ export default function Footer() {
 
       {/* Copyright Section */}
       <div className="border-t border-gray-700 py-3 text-center text-gray-400">
-        <div className="container px-6 py-4 mx-auto flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex justify-between items-center">
           <div>
             <span className="font-semibold text-white">
               ©2023 All rights reserved.
