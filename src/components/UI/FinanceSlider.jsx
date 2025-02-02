@@ -63,15 +63,15 @@ export default function FinanceSlider() {
   }, [index]);
 
   return (
-    <div className="max-w-7xl px-6 lg:px-12 py-16 mx-auto">
+    <div className="max-w-7xl px-4 sm:px-6 lg:px-12 py-12 mx-auto">
       <h5 className="text-center text-blue-500 font-medium uppercase tracking-wide text-lg md:text-xl">
         Technology Built For You
       </h5>
-      <h2 className="text-center text-3xl md:text-4xl font-extrabold text-gray-900 my-4">
+      <h2 className="text-center text-2xl md:text-4xl font-extrabold text-gray-900 my-4">
         The Future of Finance
       </h2>
 
-      <div className="flex justify-center space-x-4 mt-6">
+      <div className="flex flex-wrap justify-center gap-3 mt-6">
         {tabs.map((tab) => (
           <button
             key={tab.key}
@@ -96,13 +96,13 @@ export default function FinanceSlider() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.5 }}
-        className="mt-10 p-6 md:p-8 bg-white rounded-xl shadow-lg flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8"
+        className="mt-10 p-6 md:p-8 bg-white rounded-xl shadow-lg flex flex-col md:flex-row items-center gap-6"
       >
         <div className="flex-1 text-center md:text-left">
           <h6 className="text-blue-500 text-sm font-bold uppercase tracking-wide">
             {tabs.find((tab) => tab.key === activeTab).label}
           </h6>
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2">
             {tabs.find((tab) => tab.key === activeTab).content}
           </h3>
           <p className="text-gray-600 mt-3 leading-relaxed text-sm md:text-base">
@@ -115,7 +115,7 @@ export default function FinanceSlider() {
         <img
           src={tabs.find((tab) => tab.key === activeTab).image}
           alt="Finance"
-          className="w-full md:w-1/3 rounded-lg shadow-md"
+          className="w-full md:w-1/2 lg:w-1/3 rounded-lg shadow-md"
         />
       </motion.div>
     </div>
