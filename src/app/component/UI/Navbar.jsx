@@ -38,7 +38,7 @@ const Navbar = () => {
       if (window.scrollY > 50) {
         setNavBg("bg-white shadow-md");
         setTextColor("text-gray-800");
-        setBtnColor("border-blue-600 text-blue-600");
+        setBtnColor("border-blue-600 bg-orange-500 text-blue-600");
       } else {
         setNavBg("bg-transparent");
         setTextColor("text-gray-200");
