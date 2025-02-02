@@ -2,6 +2,7 @@ import React from "react";
 import HeroSection from "./component/UI/HeroSection";
 import FinanceHeroSection from "./component/UI/FinanceHeroSection";
 import InnovationSection from "./component/UI/InnovationSection";
+import FinanceSlider from "./component/UI/FinanceSlider";
 
 const page = () => {
   return (
@@ -9,6 +10,7 @@ const page = () => {
       <HeroSection />
       <FinanceHeroSection />
       <InnovationSection />
+      <FinanceSlider />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent leo
         diam, condimentum et viverra vehicula, tristique quis mi. Quisque
